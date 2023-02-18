@@ -1,0 +1,78 @@
+/*<p style="background-image: url('background.jpg');"></p>*/
+
+/*body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat; /* A imagem deixa de repetir-se quando é menor do que a página html (zoom-ou) 
+    background-attachment: fixed; /* A imagem mantém sempre as suas proporções 
+    background-size: cover;       /* A imagem passa a cobrir toda a página html 
+}
+*/
+
+ul {
+    list-style-type: none;                      /* Retira os pontos da lista ??????????????????????????????????????????*/
+    overflow: hidden;                           /* ??????????????????????????????????????????????????????????????????? */                                           
+    background-image: url('background.jpg');    /* Atribui uma imagem à lista */
+    background-attachment: fixed;               /* A imagem mantém sempre as suas proporções */
+    background-size: cover;                     /* A imagem passa a cobrir toda a página html */
+}
+  
+li {
+    float: left; /* Cria uma lista horizontal tornando os item float*/
+}
+  
+li a {
+    display: block;         /* Permite definir uma caixa para cada elemento ????????????????????????????????? */
+    color: white;         /* Atribui uma cor ao texto */
+    padding: 25px 30px;     /* Altura | Largura da caixa */
+    text-decoration: none;  /* Define que o texto não é sublinhado */
+}
+  
+li a:hover {
+    background-color: #1111118e; /* A imagem muda de cor quando o rato passa por cime */
+}
+
+h1 {
+    text-align: center;                         /* Centraliza o texto */
+    font-size: 3rem;                            /* Tamanho da fonte */
+    font-weight: bold;                          /* Define a espessura da fonte como negrito */
+    font-family: "Helvetica Neue", sans-serif;  /* Define a família da fonte */
+    color: #333;                              /* Define a cor do texto */
+    text-transform: uppercase;                  /* Transforma todo o texto em maiúsculo */
+    letter-spacing: 0.1em;                      /* Define o espaçamento entre as letras */
+    line-height: 1.2;                           /* Define a altura da linha para melhor legibilidade */
+}
+
+h2 {
+    font-size: 2.5rem; /* tamanho da fonte */
+    font-weight: bold; /* define a espessura da fonte como negrito */
+    font-family: "Open Sans", sans-serif; /* define a família da fonte */
+    color: #333; /* define a cor do texto */
+    margin-left: 0; /* remove a margem padrão do elemento */
+    padding-left: 0; /* remove o preenchimento padrão do elemento */
+    border-left: 4px solid #e67e22; /* adiciona uma borda esquerda laranja */
+    line-height: 1.2; /* define a altura da linha para melhor legibilidade */
+}
+
+h3{
+    text-align: center;
+}
+
+h5 {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    padding: 80px;  /*  */
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

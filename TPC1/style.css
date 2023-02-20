@@ -62,13 +62,13 @@ li a {
 }
   
 li a:hover {
-    background-color: #1111118e;   /* A imagem muda de cor quando o rato passa por cime */
+    background-color: #1111118e;   /* A imagem muda de cor quando o rato passa por cima */
 }
 
 div.gallery {
-    margin: 2px;
-    float: left;
-    width: 600px;
+    display: block;
+    margin-left: 200px;
+    margin-right: 200px;
 }
   
 div.gallery:hover {
@@ -79,4 +79,3 @@ div.gallery img {
     width: 100%;
     height: auto;
 }
-  

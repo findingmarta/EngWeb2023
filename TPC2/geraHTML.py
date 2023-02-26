@@ -130,6 +130,9 @@ for c in cidades:
                     </td>
                 </tr>
             </table>
+            <p>
+                <a href="/">Voltar ao índice</a>
+            </p>
         </body>
     </html>
     """

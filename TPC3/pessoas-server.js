@@ -7,8 +7,8 @@ http.createServer(function (req, res) {
     var d = new Date().toISOString().substring(0,16)
     console.log(req.method + " " + req.url + " " + d)
     
-    if (req.url == '/pessoas'){
-        axios.get('http://localhost:3000/pessoas')
+    if ((req.url == '/') || (req.url == '/pessoas')){
+        axios.get('http://localhost:3000/pessoas?_sort=nome&_order=asc')
             .then(function(resp) { 
                 var pesssoas = resp.data 
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
@@ -22,7 +22,7 @@ http.createServer(function (req, res) {
             })
     }
     else if(req.url == '/pessoasOrdenadas'){
-        axios.get('http://localhost:3000/pessoas?_sort=nome')
+        axios.get('http://localhost:3000/pessoas?_sort=nome&_order=desc')
             .then(function(resp) {
                 var pesssoas = resp.data 
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
@@ -83,9 +83,9 @@ http.createServer(function (req, res) {
     else if(req.url == '/pessoas/sexo'){
         axios.get('http://localhost:3000/pessoas') 
             .then(function(resp) {
-                var pesssoa = resp.data 
+                var pesssoas = resp.data 
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.write(mypages.genSexDistrib(pesssoa, d))
+                res.write(mypages.genSexDistrib(pesssoas, d))
                 res.end()
             }) 
             .catch(erro => {
@@ -96,13 +96,79 @@ http.createServer(function (req, res) {
             })
     }
     // elif para servir a lista de pessoas por sexo
-    else if(req.url.match(/pessoas\/sexo\/\w+/)){
-        axios.get('http://localhost:3000/pessoas?sexo=/' + req.url.substring(14)) 
+    else if(req.url.match(/\/pessoas\/sexo\/\w+/)){
+        axios.get('http://localhost:3000/pessoas?sexo=' + req.url.substring(14)) 
             .then(function(resp) {
-                var pesssoa = resp.data 
+                var pesssoas = resp.data 
                 var sexo = req.url.substring(14)
                 res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-                res.write(mypages.genSexDistribList(pesssoa, d, sexo))
+                res.write(mypages.genSexDistribList(pesssoas, d, sexo))
+                res.end()
+            }) 
+            .catch(erro => {
+                console.log("Erro: " + erro)
+                res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+        
+            })
+    }
+    // elif para servir a distribuição por desportos
+    else if(req.url == '/pessoas/desportos'){
+        axios.get('http://localhost:3000/pessoas') 
+            .then(function(resp) {
+                var pesssoas = resp.data 
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.write(mypages.genDespDistrib(pesssoas, d))
+                res.end()
+            }) 
+            .catch(erro => {
+                console.log("Erro: " + erro)
+                res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+        
+            })
+    }
+    // elif para servir a lista de pessoaos que praticam um desportos
+    else if(req.url.match(/\/pessoas\/desportos\/\w+/)){
+        axios.get('http://localhost:3000/pessoas') 
+            .then(function(resp) {
+                var pesssoas = resp.data 
+                var desporto = decodeURI(req.url.substring(19))
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.write(mypages.genDespDistribList(pesssoas, d, desporto))
+                res.end()
+            }) 
+            .catch(erro => {
+                console.log("Erro: " + erro)
+                res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+        
+            })
+    }
+    // elif para servir a distribuição por desportos
+    else if(req.url == '/pessoas/profissoes'){
+        axios.get('http://localhost:3000/pessoas') 
+            .then(function(resp) {
+                var pesssoas = resp.data 
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.write(mypages.genTopProfissoes(pesssoas, d))
+                res.end()
+            }) 
+            .catch(erro => {
+                console.log("Erro: " + erro)
+                res.writeHead(404, {'Content-Type': 'text/html; charset=utf-8'})
+                res.end('<p>Erro na obtenção de dados: ' + erro + '</p>')
+        
+            })
+    }
+    // elif para servir a lista de pessoaos que praticam um desportos
+    else if(req.url.match(/\/pessoas\/profissoes\/\w+/)){
+        axios.get('http://localhost:3000/pessoas') 
+            .then(function(resp) {
+                var pesssoas = resp.data 
+                var profissao = decodeURI(req.url.substring(20))
+                res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+                res.write(mypages.genTopProfissoesList(pesssoas, d, profissao))
                 res.end()
             }) 
             .catch(erro => {

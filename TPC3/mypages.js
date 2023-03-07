@@ -15,6 +15,10 @@ exports.genMainPage = function(lista , data) {
                     <a href="http://localhost:7777/pessoas/sexo" class="w3-btn w3-round">Distribuição Por Sexo</a>
                     <a href="http://localhost:7777/pessoas/desportos" class="w3-btn w3-round">Distribuição Por Desporto</a>
                     <a href="http://localhost:7777/pessoas/profissoes" class="w3-btn w3-round">TOP 10 Profissões</a>
+
+                    <a href="http://localhost:7777/pessoas" class="w3-btn w3-round">Asc</a>
+                    <a href="http://localhost:7777/pessoasOrdenadas" class="w3-btn w3-round">Desc</a>
+
                 </header>
                 
                 <div class="w3-container">
